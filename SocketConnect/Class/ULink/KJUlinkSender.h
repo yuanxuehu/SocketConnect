@@ -7,10 +7,29 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
+@protocol KJUlinkSenderDelegate<NSObject>
 
-@interface KJUlinkSender : NSObject
+- (void) sendStart:(id)sender;
+
+- (void) sendStop:(id)sender;
 
 @end
 
-NS_ASSUME_NONNULL_END
+@interface KJUlinkSender : NSObject
+
+@property(readonly) BOOL isRunning;
+
+@property(nonatomic) id<KJUlinkSenderDelegate> delegate;
+
+- (KJUlinkSender *) init;
+
+- (void)dealloc;
+
+- (void) send:(NSData *)data atIndex:(NSInteger) index ofLength:(NSInteger)length;
+
+- (void) send:(NSData *)data;
+
+- (void) stop;
+
+@end
+

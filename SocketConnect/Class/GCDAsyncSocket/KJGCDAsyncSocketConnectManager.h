@@ -6,11 +6,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#include "Global.h"
+#import "GCDAsyncSocket.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@interface KJGCDAsyncSocketConnectManager : NSObject<GCDAsyncSocketDelegate>
 
-@interface KJGCDAsyncSocketConnectManager : NSObject
+@property (strong, nonatomic) GCDAsyncSocket *aSocket;
+@property (nonatomic, assign) WIFISTATE connectState;
+
++ (instancetype)sharedInstance;
+
+- (void)connectServerHost:(NSString *) ipAddress tcpPort:(NSInteger)tcpPortNo;
+
+- (void)stopConnect;
 
 @end
 
-NS_ASSUME_NONNULL_END

@@ -6,11 +6,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KJUlinkSender.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@interface KJULinkManager : NSObject <KJUlinkSenderDelegate>
 
-@interface KJULinkManager : NSObject
++ (instancetype)sharedInstance;
+
+@property (nonatomic, strong) KJUlinkSender *ulinkSender;
+
+- (void)startConnect;
+- (void)stopConnect;
 
 @end
 
-NS_ASSUME_NONNULL_END

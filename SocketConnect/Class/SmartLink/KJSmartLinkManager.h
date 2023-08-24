@@ -6,11 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#include "KJSmartLinkHost.h"
 
 @interface KJSmartLinkManager : NSObject
 
++ (instancetype)sharedInstance;
+
+- (void)startConnect;
+- (void)stopConnect;
+
 @end
 
-NS_ASSUME_NONNULL_END
